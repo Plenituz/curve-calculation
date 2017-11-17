@@ -2,6 +2,7 @@
 #include "LinearInterpolator.h"
 #include "Point.h"
 #include "ICurvePoint.h"
+#include "PointNotFoundException.h"
 
 #include <iostream>
 
@@ -15,28 +16,45 @@ double ICurve::measureCurve()
     double distance = 0;
     for(uint i = 1; i < points.size(); i++)
     {
-        distance += points[i-1]->distanceTo(points[i]);
-        //distance += distanceOnCurve(points[i-1], points[i]);
+        distance += distanceToNext(i-1);
     }
     return distance;
 }
 
+/**
+    careful this doesn't check if the point and next point exist
+    This caches the distance so it's only calculated once
+*/
+double ICurve::distanceToNext(int pIndex)
+{
+    auto cached = distanceToNextCache.find(pIndex);
+    if(cached != distanceToNextCache.end()) {
+        //found
+        return cached->second;
+    }
+    else {
+        //not found
+        double value = interpolator()->distanceBetween(points[pIndex], points[pIndex+1]);
+        distanceToNextCache[pIndex] = value;
+        return value;
+    }
+}
+
 ICurve::ICurve(){
-    
+
 }
 
 ICurve::~ICurve(){
-    
+
 }
 
 Point ICurve::pointAtPercent(double percent)
 {
     if(points.size() == 0)
         return Point();
-    if(points.size() == 1){
-        ICurvePoint* p = points[0];
-        return interpolator()->interpolate(p, p, 0);
-    }
+    if(points.size() == 1)
+        return interpolator()->interpolate(points[0], points[0], 0);
+
 
     ICurvePoint* from;
     ICurvePoint* to;
@@ -49,8 +67,7 @@ Point ICurve::pointAtPercent(double percent)
     for(uint i = 1 ; i < points.size(); i++)
     {
         startPercent = currentDist / lengthPath;
-        currentDist += points[i-1]->distanceTo(points[i]);
-        //currentDist += distanceOnCurve(points[i-1], points[i]);
+        currentDist += distanceToNext(i-1);
         if(currentDist > wantedDist)
         {
             endPercent = currentDist / lengthPath;
@@ -62,12 +79,11 @@ Point ICurve::pointAtPercent(double percent)
     }
     if(!found)
     {
-        std::cout << "error point not found";
-        return Point();
+        //could check if percent is between 0 and 1 but you never know
+        //what might cause a point to be not found
+        throw PointNotFoundException();
     }
 
     double localPercent = LinearInterpolator::InverseLinear(percent, startPercent, endPercent);
-    //cout << "start percent:" << startPercent << " end percent:" << endPercent << endl;
-    //cout << "local percent:" << localPercent << endl;
     return interpolator()->interpolate(from, to, localPercent);
 }

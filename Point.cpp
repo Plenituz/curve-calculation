@@ -35,17 +35,8 @@ Point::Point(double x, double y)
 }
 
 Point::~Point(){
-    
+
 }
-
-double Point::distanceTo(ICurvePoint* other)
-{
-    Point* otherP = dynamic_cast<Point*>(other);
-    assert(otherP != nullptr);
-    return Point::distance(*this, *otherP);
-}
-
-
 
 double Point::distance(Point a, Point b)
 {

@@ -7,10 +7,18 @@
 using namespace std;
 
 void CurveRenderer::render(ICurve& curve, double step, ostream& file)
-{    
+{
     for(double i = step; i < 1; i += step){
         Point p1 = curve.pointAtPercent(i-step);
         Point p2 = curve.pointAtPercent(i);
         file << " " << p1.x << " " << p1.y << " moveto " << p2.x << " " << p2.y << " lineto stroke" << endl;
+    }
+}
+
+void CurveRenderer::renderAll(double step, ostream& file)
+{
+    file << "%!PS" << endl;
+    for(uint i = 0; i < curves.size(); i++){
+        CurveRenderer::render(*curves[i], step, file);
     }
 }

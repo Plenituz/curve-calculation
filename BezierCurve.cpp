@@ -4,7 +4,9 @@
 
 CurvePointInterpolator* BezierCurve::interpolator()
 {
-    return new BezierPointInterpolator();
+    if(_interpolator == nullptr)
+        _interpolator = new BezierPointInterpolator();
+    return _interpolator;
 }
 
 void BezierCurve::addPoint(ICurvePoint* point)

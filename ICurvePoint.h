@@ -3,7 +3,7 @@
 
 class ICurvePoint {
 public:
-    virtual double distanceTo(ICurvePoint* other) = 0;
+    virtual void tmp(){}
 };
 
 #endif // ICURVEPOINT

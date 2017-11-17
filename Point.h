@@ -21,7 +21,6 @@ public:
     Point operator*(const double& v);
     std::string toString();
     static double distance(Point x1, Point y1);
-    virtual double distanceTo(ICurvePoint* other);
 };
 #endif
 

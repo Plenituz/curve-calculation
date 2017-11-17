@@ -5,7 +5,7 @@ Point BezierPointInterpolator::interpolate(ICurvePoint* from, ICurvePoint* to, d
 {
     BezierCurvePoint* fromP = dynamic_cast<BezierCurvePoint*>(from);
     BezierCurvePoint* toP = dynamic_cast<BezierCurvePoint*>(to);
-        
+
     assert(fromP != nullptr);
     assert(toP != nullptr);
     return interpolate(*fromP, *toP, t);
@@ -20,7 +20,6 @@ Point BezierPointInterpolator::getBezierPoint(
     Point start, Point first,
     Point second, Point end, double t)
 {
-    
     double omt = 1.0 - t;
     double omt2 = omt * omt;
     double t2 = t * t;
