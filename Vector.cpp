@@ -1,13 +1,21 @@
 #include "Vector.h"
 #include "Point.h"
 #include <math.h>
-
+#include <sstream>
+#include <string>
 
 Vector::Vector()
 {
     x = 0;
     y = 0;
     z = 0;
+}
+
+Vector::Vector(double x, double y)
+{
+    this->x = x;
+    this->y = y;
+    this->z = 0;
 }
 
 Vector::Vector(double x, double y, double z)
@@ -54,6 +62,15 @@ Vector Vector::operator*(const Vector& v2)
     return Vector(x, y, z);
 }
 
+Vector Vector::operator*(const double& d)
+{
+    Vector v = *this;
+
+    Vector res = Vector(v.x * d, v.y * d, v.z * d);
+    return res;
+}
+
+
 Vector Vector::operator/(const double& d)
 {
     Vector v = *this;
@@ -68,4 +85,17 @@ bool Vector::operator==(const Vector& v2)
     //to avoid floating point errors
     Vector v1 = *this;
     return v1.x == v2.x && v1.y == v2.y && v1.z == v2.z;
+}
+
+Vector Vector::operator+(const Vector& v)
+{
+    Vector t = *this;
+    return Vector(v.x + t.x, v.y + t.y, v.z + t.z);
+}
+
+std::string Vector::toString()
+{
+    std::stringstream ss;
+    ss << x << " " << y;
+    return ss.str();
 }

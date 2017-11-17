@@ -1,17 +1,17 @@
-#ifndef POLYLINE
-#define POLYLINE
+#ifndef ZIGZAGCURVE
+#define ZIGZAGCURVE
 
 #include "ICurve.h"
-#include "Point.h"
 #include "ICurvePoint.h"
+#include "ZigzagPoint.h"
 
-class PolyLine : public ICurve{
+class ZigzagCurve : public ICurve{
 private:
     void addPoint(ICurvePoint* point);
     CurvePointInterpolator* _interpolator;
     virtual CurvePointInterpolator* interpolator();
 public:
-    void addPoint(Point point);
+    void addPoint(ZigzagPoint point);
 };
 
 #endif

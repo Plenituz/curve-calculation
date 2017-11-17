@@ -13,6 +13,13 @@ std::string Point::toString()
     return ss.str();
 }
 
+Point::Point(Vector v)
+{
+    x = v.x;
+    y = v.y;
+    z = v.z;
+}
+
 Point::Point()
 {
     x = 0;

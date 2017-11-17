@@ -5,7 +5,7 @@
 #include "Point.h"
 #include "ICurvePoint.h"
 #include "BezierCurvePoint.h"
-#include "BezierPointInterpolator.h";
+#include "BezierPointInterpolator.h"
 
 class HermittePointInterpolator : public BezierPointInterpolator{
 private:

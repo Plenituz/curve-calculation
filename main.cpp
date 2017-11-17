@@ -9,29 +9,49 @@
 #include <vector>
 #include "LinearPointInterpolator.h"
 #include "HermitteCurve.h"
+#include "ZigzagCurve.h"
+#include "ZigzagPoint.h"
 
 using namespace std;
 
+/*
+ * known bug: adding twice the same point might crash on some interpolators
+ * 
+ */
+ void generateFaceYesThatsYou();
+ 
 int main()
 {
-    ofstream myfile;
-    myfile.open ("/home/dream/Bureau/test");
+    
+    generateFaceYesThatsYou();
+    
+//    ZigzagCurve curve = ZigzagCurve();
+//    curve.addPoint(ZigzagPoint(Point(100, 100), 0, 1));
+//    curve.addPoint(ZigzagPoint(Point(200, 200), 80, 50));
+//    curve.addPoint(ZigzagPoint(Point(400, 400), 1, 1));
+    
+    
 
-//    PolyLine* curve = new PolyLine();
-//    curve->addPoint(Point());
-//    curve->addPoint(Point(100, 0));
-//    curve->addPoint(Point(100, 100));
-//    curve->addPoint(Point(150, 150));
+
+    return 0;
+}
+
+void generateFaceYesThatsYou()
+{
+    ofstream file;
+    file.open ("face_thomin");
+    
     CurveRenderer renderer = CurveRenderer();
     BezierCurve* curve;
+    
     curve = new BezierCurve();
     curve->addPoint(BezierCurvePoint(Point(382.726776123047, 403.94116973877), Point(368.565902709961, 410.707260131836), Point(371.79695892334, 419.279434204102)));
     curve->addPoint(BezierCurvePoint(Point(342.750778198242, 400.858978271484), Point(332.616508483887, 396.235633850098), Point(355.479125976563, 406.66577911377)));
     curve->addPoint(BezierCurvePoint(Point(312.034950256348, 399.043991088867), Point(309.036849975586, 399.536727905273), Point(322.402885437012, 397.340148925781)));
     curve->addPoint(BezierCurvePoint(Point(305.035720825195, 403.60961151123), Point(304.224403381348, 406.880401611328), Point(305.881439208984, 400.200141906738)));
     curve->addPoint(BezierCurvePoint(Point(308.637016296387, 411.262664794922), Point(321.501091003418, 423.267127990723), Point(306.396995544434, 409.172355651855)));
-
     renderer.curves.push_back(curve);
+    
     curve = new BezierCurve();
     curve->addPoint(BezierCurvePoint(Point(310.501647949219, 368.008735656738), Point(322.750991821289, 392.485198974609), Point(306.016937255859, 371.78670501709)));
     curve->addPoint(BezierCurvePoint(Point(346.246971130371, 380.163642883301), Point(349.65552520752, 378.264152526855), Point(326.859970092773, 390.967597961426)));
@@ -48,8 +68,8 @@ int main()
     curve->addPoint(BezierCurvePoint(Point(305.187744140625, 351.10668182373), Point(302.977203369141, 355.535018920898), Point(309.726699829102, 342.013870239258)));
     curve->addPoint(BezierCurvePoint(Point(299.312759399414, 364.750556945801), Point(297.725280761719, 369.742263793945), Point(300.806831359863, 360.052551269531)));
     curve->addPoint(BezierCurvePoint(Point(301.534332275391, 378.918891906738), Point(308.978118896484, 381.302490234375), Point(294.474998474121, 376.658363342285)));
-
     renderer.curves.push_back(curve);
+    
     curve = new BezierCurve();
     curve->addPoint(BezierCurvePoint(Point(209.151306152344, 354.545036315918), Point(209.407836914063, 346.110900878906), Point(220.488075256348, 347.001892089844)));
     curve->addPoint(BezierCurvePoint(Point(187.315006256104, 335.502319335938), Point(184.844570159912, 336.19214630127), Point(194.298728942871, 333.55224609375)));
@@ -74,8 +94,8 @@ int main()
     curve->addPoint(BezierCurvePoint(Point(243.367652893066, 357.598114013672), Point(245.316719055176, 360.614959716797), Point(237.935829162598, 349.190620422363)));
     curve->addPoint(BezierCurvePoint(Point(240.296562194824, 364.704689025879), Point(237.443641662598, 365.768852233887), Point(243.552474975586, 363.490219116211)));
     curve->addPoint(BezierCurvePoint(Point(234.701065063477, 361.449348449707), Point(230.747291564941, 343.587524414063), Point(235.311378479004, 364.206573486328)));
-
     renderer.curves.push_back(curve);
+    
     curve = new BezierCurve();
     curve->addPoint(BezierCurvePoint(Point(259.221244812012, 227.737358093262), Point(246.556365966797, 228.640686035156), Point(252.039093017578, 223.528495788574)));
     curve->addPoint(BezierCurvePoint(Point(234.749839782715, 218.899703979492), Point(232.856254577637, 215.953857421875), Point(239.632690429688, 226.496131896973)));
@@ -102,8 +122,8 @@ int main()
     curve->addPoint(BezierCurvePoint(Point(257.905014038086, 187.853485107422), Point(253.811462402344, 194.031280517578), Point(261.487426757813, 182.447067260742)));
     curve->addPoint(BezierCurvePoint(Point(243.977027893066, 204.453048706055), Point(238.260932922363, 208.364273071289), Point(250.551338195801, 199.954605102539)));
     curve->addPoint(BezierCurvePoint(Point(245.294952392578, 219.499603271484), Point(248.464874267578, 221.793411254883), Point(239.174560546875, 215.070877075195)));
-
     renderer.curves.push_back(curve);
+    
     curve = new BezierCurve();
     curve->addPoint(BezierCurvePoint(Point(139.298137664795, 209.275360107422), Point(161.561737060547, 207.034103393555), Point(144.992088317871, 203.240249633789)));
     curve->addPoint(BezierCurvePoint(Point(157.58088684082, 227.442741394043), Point(154.662094116211, 242.539581298828), Point(161.478652954102, 207.282165527344)));
@@ -164,16 +184,8 @@ int main()
     curve->addPoint(BezierCurvePoint(Point(203.883728027344, 121.137313842773), Point(192.027374267578, 145.718444824219), Point(207.598022460938, 113.436767578125)));
     curve->addPoint(BezierCurvePoint(Point(166.276782989502, 193.900451660156), Point(163.893962860107, 198.533889770508), Point(178.764266967773, 169.618103027344)));
     curve->addPoint(BezierCurvePoint(Point(155.608863830566, 200.87580871582), Point(150.001728057861, 201.475891113281), Point(160.31721496582, 200.37190246582)));
-
     renderer.curves.push_back(curve);
-
-    renderer.renderAll(0.001, myfile);
-
-
-    myfile.close();
-
-    /*LinearPointInterpolator inter = LinearPointInterpolator();
-    Point res = inter.interpolate(Point(), Point(10, 10), .5);
-    */
-    return 0;
+    
+    renderer.renderAll(0.001, file);
+    file.close();
 }

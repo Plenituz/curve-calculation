@@ -102,13 +102,18 @@
       <File Name="BezierCurve.cpp"/>
       <File Name="ICurve.cpp"/>
       <File Name="PolyLine.cpp"/>
+      <File Name="HermitteCurve.cpp"/>
+      <File Name="HermitteCurve.h"/>
+      <File Name="ZigzagCurve.h"/>
+      <File Name="ZigzagCurve.cpp"/>
     </VirtualDirectory>
     <VirtualDirectory Name="CurvePoints">
       <File Name="BezierCurvePoint.h"/>
       <File Name="ICurvePoint.h"/>
       <File Name="Point.h"/>
-      <File Name="BezierCurvePoint.cpp"/>
       <File Name="Point.cpp"/>
+      <File Name="ZigzagPoint.h"/>
+      <File Name="ZigzagBezierPoint.h"/>
     </VirtualDirectory>
     <File Name="CurveRenderer.cpp"/>
     <VirtualDirectory Name="Interpolators">
@@ -120,9 +125,18 @@
       <File Name="BezierPointInterpolator.cpp"/>
       <File Name="LinearInterpolator.cpp"/>
       <File Name="LinearPointInterpolator.cpp"/>
+      <File Name="HermittePointInterpolator.cpp"/>
+      <File Name="HermittePointInterpolator.h"/>
+      <File Name="MathPointInterpolator.cpp"/>
+      <File Name="MathPointInterpolator.h"/>
+      <File Name="ZigzagPointInterpolator.h"/>
+      <File Name="ZigzagPointInterpolator.cpp"/>
+      <File Name="ZigzagBezierPointInterpolator.h"/>
+      <File Name="ZigzagBezierPointInterpolator.cpp"/>
     </VirtualDirectory>
     <File Name="CurveRenderer.h"/>
     <File Name="Vector.h"/>
+    <File Name="PointNotFoundException.h"/>
   </VirtualDirectory>
   <Dependencies Name="Debug"/>
   <Dependencies Name="Release"/>

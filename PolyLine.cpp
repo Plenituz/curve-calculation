@@ -12,7 +12,9 @@ void PolyLine::addPoint(ICurvePoint* point)
 
 CurvePointInterpolator* PolyLine::interpolator()
 {
-    return new LinearPointInterpolator();
+    if(_interpolator == nullptr)
+        _interpolator = new LinearPointInterpolator();
+    return _interpolator;
 }
 
 void PolyLine::addPoint(Point point)

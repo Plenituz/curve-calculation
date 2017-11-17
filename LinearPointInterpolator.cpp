@@ -18,13 +18,9 @@ Point LinearPointInterpolator::interpolate(ICurvePoint* from, ICurvePoint* to, d
 
 Point LinearPointInterpolator::interpolate(Point from, Point to, double t)
 {
-    cout << "from:" << from.toString() << endl;
-    cout << "to:" << to.toString() << endl;
-
     double x = interpolator.interpolate(from.x, to.x, t);
     double y = interpolator.interpolate(from.y, to.y, t);
     double z = interpolator.interpolate(from.z, to.z, t);
-    cout << "result:" << x << " " << y << endl << endl;
     return Point(x, y, z);
 }
 

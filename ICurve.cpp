@@ -79,6 +79,7 @@ Point ICurve::pointAtPercent(double percent)
     }
     if(!found)
     {
+        
         //could check if percent is between 0 and 1 but you never know
         //what might cause a point to be not found
         throw PointNotFoundException();
