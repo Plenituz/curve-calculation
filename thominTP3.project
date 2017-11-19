@@ -106,6 +106,8 @@
       <File Name="HermitteCurve.h"/>
       <File Name="ZigzagCurve.h"/>
       <File Name="ZigzagCurve.cpp"/>
+      <File Name="ZigzagBezierCurve.cpp"/>
+      <File Name="ZigzagBezierCurve.h"/>
     </VirtualDirectory>
     <VirtualDirectory Name="CurvePoints">
       <File Name="BezierCurvePoint.h"/>

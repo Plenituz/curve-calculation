@@ -1,9 +1,11 @@
 #include "ZigzagBezierPointInterpolator.h"
 #include "ZigzagBezierPoint.h"
 #include "ZigzagPointInterpolator.h"
+#include "BezierPointInterpolator.h"
+#include <cassert>
 
 
-Point interpolate(ICurvePoint* from, ICurvePoint* to, double t)
+Point ZigzagBezierPointInterpolator::interpolate(ICurvePoint* from, ICurvePoint* to, double t)
 {
     ZigzagBezierPoint* fromP = dynamic_cast<ZigzagBezierPoint*>(from);
     ZigzagBezierPoint* toP = dynamic_cast<ZigzagBezierPoint*>(to);
@@ -13,16 +15,15 @@ Point interpolate(ICurvePoint* from, ICurvePoint* to, double t)
     return interpolate(*fromP, *toP, t);
 }
 
-Point interpolate(ZigzagBezierPoint from, ZigzagBezierPoint to, double t)
+Point ZigzagBezierPointInterpolator::interpolate(ZigzagBezierPoint from, ZigzagBezierPoint to, double t)
 {
     ZigzagPointInterpolator interZ = ZigzagPointInterpolator();
-    LinearPointInterpolator interP = LinearPointInterpolator();
     
-    Point zig = interZ.interpolate(ZigzagPoint(from.position, 20, 5), ZigzagPoint(to.position, 20, 5), t);
-    Point lin = interP.interpolate(from.position, to.position, t);
-    Vector up = zig - lin;
-    double mg = up.magnitude();
+    Point zig = interZ.interpolate(ZigzagPoint(Point(), from.frequency, from.amplitude), 
+        ZigzagPoint(Point(100, 0), to.frequency, to.amplitude), t);
+    double mg = zig.y;
     
+    //make sure we don't fetch 0 - step 
     if(t == 0)
         t = 0.01;
     
@@ -35,5 +36,5 @@ Point interpolate(ZigzagBezierPoint from, ZigzagBezierPoint to, double t)
     Vector rot = Vector(-tangent.y, tangent.x);
     rot = rot * mg;
 
-
+    return p2 + rot;
 }

@@ -60,8 +60,8 @@ AS       := /usr/bin/as
 ## User defined environment variables
 ##
 CodeLiteDir:=/usr/share/codelite
-Objects0=$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IntermediateDirectory)/Vector.cpp$(ObjectSuffix) $(IntermediateDirectory)/CurveRenderer.cpp$(ObjectSuffix) $(IntermediateDirectory)/BezierCurve.cpp$(ObjectSuffix) $(IntermediateDirectory)/ICurve.cpp$(ObjectSuffix) $(IntermediateDirectory)/PolyLine.cpp$(ObjectSuffix) $(IntermediateDirectory)/HermitteCurve.cpp$(ObjectSuffix) $(IntermediateDirectory)/ZigzagCurve.cpp$(ObjectSuffix) $(IntermediateDirectory)/Point.cpp$(ObjectSuffix) $(IntermediateDirectory)/BezierPointInterpolator.cpp$(ObjectSuffix) \
-	$(IntermediateDirectory)/LinearInterpolator.cpp$(ObjectSuffix) $(IntermediateDirectory)/LinearPointInterpolator.cpp$(ObjectSuffix) $(IntermediateDirectory)/HermittePointInterpolator.cpp$(ObjectSuffix) $(IntermediateDirectory)/MathPointInterpolator.cpp$(ObjectSuffix) $(IntermediateDirectory)/ZigzagPointInterpolator.cpp$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IntermediateDirectory)/Vector.cpp$(ObjectSuffix) $(IntermediateDirectory)/CurveRenderer.cpp$(ObjectSuffix) $(IntermediateDirectory)/BezierCurve.cpp$(ObjectSuffix) $(IntermediateDirectory)/ICurve.cpp$(ObjectSuffix) $(IntermediateDirectory)/PolyLine.cpp$(ObjectSuffix) $(IntermediateDirectory)/HermitteCurve.cpp$(ObjectSuffix) $(IntermediateDirectory)/ZigzagCurve.cpp$(ObjectSuffix) $(IntermediateDirectory)/ZigzagBezierCurve.cpp$(ObjectSuffix) $(IntermediateDirectory)/Point.cpp$(ObjectSuffix) \
+	$(IntermediateDirectory)/BezierPointInterpolator.cpp$(ObjectSuffix) $(IntermediateDirectory)/LinearInterpolator.cpp$(ObjectSuffix) $(IntermediateDirectory)/LinearPointInterpolator.cpp$(ObjectSuffix) $(IntermediateDirectory)/HermittePointInterpolator.cpp$(ObjectSuffix) $(IntermediateDirectory)/MathPointInterpolator.cpp$(ObjectSuffix) $(IntermediateDirectory)/ZigzagPointInterpolator.cpp$(ObjectSuffix) $(IntermediateDirectory)/ZigzagBezierPointInterpolator.cpp$(ObjectSuffix) 
 
 
 
@@ -156,6 +156,14 @@ $(IntermediateDirectory)/ZigzagCurve.cpp$(DependSuffix): ZigzagCurve.cpp
 $(IntermediateDirectory)/ZigzagCurve.cpp$(PreprocessSuffix): ZigzagCurve.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/ZigzagCurve.cpp$(PreprocessSuffix) ZigzagCurve.cpp
 
+$(IntermediateDirectory)/ZigzagBezierCurve.cpp$(ObjectSuffix): ZigzagBezierCurve.cpp $(IntermediateDirectory)/ZigzagBezierCurve.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/media/plenituz/DATA/C/codelite-worspace/thominTP3/ZigzagBezierCurve.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/ZigzagBezierCurve.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/ZigzagBezierCurve.cpp$(DependSuffix): ZigzagBezierCurve.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/ZigzagBezierCurve.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/ZigzagBezierCurve.cpp$(DependSuffix) -MM ZigzagBezierCurve.cpp
+
+$(IntermediateDirectory)/ZigzagBezierCurve.cpp$(PreprocessSuffix): ZigzagBezierCurve.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/ZigzagBezierCurve.cpp$(PreprocessSuffix) ZigzagBezierCurve.cpp
+
 $(IntermediateDirectory)/Point.cpp$(ObjectSuffix): Point.cpp $(IntermediateDirectory)/Point.cpp$(DependSuffix)
 	$(CXX) $(IncludePCH) $(SourceSwitch) "/media/plenituz/DATA/C/codelite-worspace/thominTP3/Point.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Point.cpp$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/Point.cpp$(DependSuffix): Point.cpp
@@ -211,6 +219,14 @@ $(IntermediateDirectory)/ZigzagPointInterpolator.cpp$(DependSuffix): ZigzagPoint
 
 $(IntermediateDirectory)/ZigzagPointInterpolator.cpp$(PreprocessSuffix): ZigzagPointInterpolator.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/ZigzagPointInterpolator.cpp$(PreprocessSuffix) ZigzagPointInterpolator.cpp
+
+$(IntermediateDirectory)/ZigzagBezierPointInterpolator.cpp$(ObjectSuffix): ZigzagBezierPointInterpolator.cpp $(IntermediateDirectory)/ZigzagBezierPointInterpolator.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/media/plenituz/DATA/C/codelite-worspace/thominTP3/ZigzagBezierPointInterpolator.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/ZigzagBezierPointInterpolator.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/ZigzagBezierPointInterpolator.cpp$(DependSuffix): ZigzagBezierPointInterpolator.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/ZigzagBezierPointInterpolator.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/ZigzagBezierPointInterpolator.cpp$(DependSuffix) -MM ZigzagBezierPointInterpolator.cpp
+
+$(IntermediateDirectory)/ZigzagBezierPointInterpolator.cpp$(PreprocessSuffix): ZigzagBezierPointInterpolator.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/ZigzagBezierPointInterpolator.cpp$(PreprocessSuffix) ZigzagBezierPointInterpolator.cpp
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)
