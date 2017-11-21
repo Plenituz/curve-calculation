@@ -21,6 +21,7 @@ public:
     Point operator+(const Point& v);
     Vector operator-(const Point& v);
     Point operator*(const double& v);
+    bool operator==(const Point& v);
     std::string toString();
     static double distance(Point x1, Point y1);
 };

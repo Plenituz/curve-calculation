@@ -18,6 +18,7 @@ protected:
     virtual double distanceToNext(int pIndex);
 
 public:
+    virtual void removeAt(uint index);
     virtual void addPoint(ICurvePoint* point) = 0;
     ICurve();
     ~ICurve();

@@ -19,22 +19,24 @@ Point ZigzagPointInterpolator::interpolate(ICurvePoint* from, ICurvePoint* to, d
 
 Point ZigzagPointInterpolator::interpolate(ZigzagPoint from, ZigzagPoint to, double t)
 {
+    if (from.position == to.position)
+        return from.position;
     Vector right = to.position - from.position;
     double rightMg = right.magnitude();
     double distanceToGo = rightMg * t;
-    
+
     //normalize
     right = right / rightMg;
     //up is therefore normalized too
     Vector up = Vector(-right.y, right.x);
     //put back at right length
     right = right * distanceToGo;
-    
+
     double freq = LinearInterpolator::LinearInterpolation(from.frequency, to.frequency, t);
     double ampl = LinearInterpolator::LinearInterpolation(from.amplitude, to.amplitude, t);
-    
+
     up = up * cos(t*freq) * ampl;
-        
+
     Vector res = right + up;
     return from.position + res;
 }

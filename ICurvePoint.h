@@ -3,7 +3,8 @@
 
 class ICurvePoint {
 public:
-    virtual void tmp(){}
+//so the class is polymorphic
+    virtual void doNothing(){}
 };
 
 #endif // ICURVEPOINT

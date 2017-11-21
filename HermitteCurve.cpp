@@ -2,7 +2,7 @@
 #include "HermittePointInterpolator.h"
 
 
-HermittePointInterpolator* HermitteCurve::interpolator()
+CurvePointInterpolator* HermitteCurve::interpolator()
 {
     if(_interpolator == nullptr)
         _interpolator = new HermittePointInterpolator();

@@ -48,13 +48,18 @@ ICurve::~ICurve(){
 
 }
 
+void ICurve::removeAt(uint index)
+{
+    distanceToNextCache.erase(index);
+    points.erase(points.begin() + index);
+}
+
 Point ICurve::pointAtPercent(double percent)
 {
     if(points.size() == 0)
         return Point();
     if(points.size() == 1)
         return interpolator()->interpolate(points[0], points[0], 0);
-
 
     ICurvePoint* from;
     ICurvePoint* to;
@@ -79,7 +84,6 @@ Point ICurve::pointAtPercent(double percent)
     }
     if(!found)
     {
-        
         //could check if percent is between 0 and 1 but you never know
         //what might cause a point to be not found
         throw PointNotFoundException();

@@ -86,6 +86,12 @@ Vector Point::operator-(const Point& p2)
     return resultat;
 }
 
+bool Point::operator==(const Point& v)
+{
+    Point t = *this;
+    return t.x == v.x && t.y == v.y && t.z == v.z;
+}
+
 Point Point::operator*(const double& v)
 {
     Point p1 = *this;
