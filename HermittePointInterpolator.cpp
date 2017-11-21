@@ -1,16 +1,6 @@
 #include "HermittePointInterpolator.h"
 #include <cassert>
 
-Point HermittePointInterpolator::interpolate(ICurvePoint* from, ICurvePoint* to, double t)
-{
-    BezierCurvePoint* fromP = dynamic_cast<BezierCurvePoint*>(from);
-    BezierCurvePoint* toP = dynamic_cast<BezierCurvePoint*>(to);
-
-    assert(fromP != nullptr);
-    assert(toP != nullptr);
-    return interpolate(*fromP, *toP, t);
-}
-
 Point HermittePointInterpolator::interpolate(BezierCurvePoint from, BezierCurvePoint to, double t)
 {
     return getHermittePoint(from.position, from.rightHandle, to.leftHandle, to.position, t);

@@ -9,13 +9,3 @@ HermittePointInterpolator* HermitteCurve::interpolator()
     return _interpolator;
 }
 
-void HermitteCurve::addPoint(ICurvePoint* point)
-{
-    points.push_back(point);
-}
-
-void HermitteCurve::addPoint(BezierCurvePoint point)
-{
-    addPoint(&point);
-}
-

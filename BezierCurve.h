@@ -8,9 +8,10 @@
 class BezierCurve : public ICurve
 {
 private:
-    CurvePointInterpolator* _interpolator;
     virtual CurvePointInterpolator* interpolator();
     virtual void addPoint(ICurvePoint* point);
+protected:
+    CurvePointInterpolator* _interpolator;
 public:
     void addPoint(BezierCurvePoint point);
 };

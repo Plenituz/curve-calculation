@@ -4,15 +4,12 @@
 #include "ICurve.h"
 #include "BezierCurvePoint.h"
 #include "HermittePointInterpolator.h"
+#include "BezierCurve.h"
 
-class HermitteCurve : public ICurve
+class HermitteCurve : public BezierCurve
 {
 private:
-    HermittePointInterpolator* _interpolator;
-    virtual HermittePointInterpolator* interpolator();
-    virtual void addPoint(ICurvePoint* point);
-public:
-    void addPoint(BezierCurvePoint point);
+    virtual CurvePointInterpolator* interpolator();
 };
 
 

@@ -9,7 +9,6 @@
 
 class HermittePointInterpolator : public BezierPointInterpolator{
 private:
-    Point interpolate(ICurvePoint* from, ICurvePoint* to, double t);
     Point getHermittePoint(Point start, Point first, Point second, Point end, double t);
 public:
     Point interpolate(BezierCurvePoint from, BezierCurvePoint to, double t);

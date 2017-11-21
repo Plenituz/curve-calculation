@@ -17,7 +17,9 @@ using namespace std;
 
 /*
  * known bug: adding twice the same point might crash on some interpolators
- * 
+ * TODO: 
+ * add remove point that clear the cache of the removed point
+ * remove tmp method from ICurvePoint
  */
 void generateFaceYesThatsYou();
 void testZigzagBezier();

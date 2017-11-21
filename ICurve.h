@@ -9,7 +9,7 @@
 #include <map>
 using namespace std;
 
-class ICurve {//TODO add remove point that clear the cache of the removed point
+class ICurve {
 protected:
     vector<ICurvePoint*> points;
     map<int, double> distanceToNextCache;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ;
